@@ -8,6 +8,7 @@ import { BsTranslate } from 'react-icons/bs';
 import { TbHexagonLetterD } from 'react-icons/tb';
 import { FaHeadphones } from 'react-icons/fa6';
 import { IoIosBuild } from 'react-icons/io';
+import { FaBrain } from 'react-icons/fa';
 import { AnnotationToolType } from '@/types/annotator';
 import { stubTranslation as _ } from '@/utils/misc';
 
@@ -96,6 +97,13 @@ export const annotationToolButtons = createAnnotationToolButtons([
     label: _('Proofread'),
     tooltip: _('Proofread text after selection'),
     Icon: IoIosBuild,
+  },
+  {
+    type: 'explain',
+    label: 'Explain',
+    tooltip: 'AI explain selected text',
+    Icon: FaBrain,
+    quickAction: true,
   },
 ]);
 
