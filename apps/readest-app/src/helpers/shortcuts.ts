@@ -133,6 +133,11 @@ const DEFAULT_SHORTCUTS = {
     description: _('Proofread Selection'),
     section: 'Selection',
   },
+  onExplainSelection: {
+    keys: ['ctrl+e', 'cmd+e'],
+    description: _('Explain Selection'),
+    section: 'Selection',
+  },
   onOpenFontLayoutSettings: {
     keys: ['shift+f', 'ctrl+,', 'cmd+,'],
     description: _('Open Settings'),

@@ -1,6 +1,6 @@
 import type { LanguageModel, EmbeddingModel } from 'ai';
 
-export type AIProviderName = 'ollama' | 'ai-gateway';
+export type AIProviderName = 'ollama' | 'ai-gateway' | 'openai-compatible';
 
 export interface AIProvider {
   id: AIProviderName;
@@ -26,6 +26,11 @@ export interface AISettings {
   aiGatewayModel?: string;
   aiGatewayCustomModel?: string;
   aiGatewayEmbeddingModel?: string;
+
+  openaiCompatibleBaseUrl: string;
+  openaiCompatibleModel: string;
+  openaiCompatibleApiKey?: string;
+  openaiCompatibleEmbeddingModel: string;
 
   spoilerProtection: boolean;
   maxContextChunks: number;
@@ -70,6 +75,16 @@ export interface EmbeddingProgress {
   current: number;
   total: number;
   phase: 'chunking' | 'embedding' | 'indexing';
+}
+
+export interface ExplanationCacheEntry {
+  id: string; // `${bookHash}:${textHash}`
+  bookHash: string;
+  textHash: string;
+  selectedText: string;
+  explanation: string;
+  model: string;
+  timestamp: number;
 }
 
 // stored AI conversation for a book

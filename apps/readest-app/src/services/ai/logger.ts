@@ -73,18 +73,6 @@ export const aiLogger = {
     error: (operation: string, error: string) =>
       log('error', 'STORE', `${operation} failed: ${error}`),
   },
-  search: {
-    query: (query: string, maxSection?: number) =>
-      log('info', 'SEARCH', `Query: "${query.slice(0, 50)}..."`, { maxSection }),
-    bm25Results: (count: number, topScore: number) =>
-      log('debug', 'SEARCH', `BM25: ${count} results, top score: ${topScore.toFixed(3)}`),
-    vectorResults: (count: number, topScore: number) =>
-      log('debug', 'SEARCH', `Vector: ${count} results, top similarity: ${topScore.toFixed(4)}`),
-    hybridResults: (count: number, methods: string[]) =>
-      log('info', 'SEARCH', `Hybrid: ${count} results`, { methods }),
-    spoilerFiltered: (before: number, after: number, maxSection: number) =>
-      log('debug', 'SEARCH', `Spoiler filter: ${before} → ${after} (max section: ${maxSection})`),
-  },
   chat: {
     send: (messageLength: number, hasContext: boolean) =>
       log('info', 'CHAT', `Sending message`, { messageLength, hasContext }),
@@ -116,5 +104,27 @@ export const aiLogger = {
       log('debug', 'PROVIDER', `Chat request: ${messageCount} messages`, { provider }),
     error: (provider: string, error: string) =>
       log('error', 'PROVIDER', `${provider} error: ${error}`),
+  },
+  search: {
+    query: (query: string, maxSection?: number) =>
+      log('info', 'SEARCH', `Query: "${query.slice(0, 50)}..."`, { maxSection }),
+    expanded: (original: string, expanded: string) =>
+      log('info', 'SEARCH', `Query expanded: "${original}" → "${expanded}"`),
+    rerank: (before: number, after: number) =>
+      log('info', 'SEARCH', `Reranked: ${before} → ${after} results`),
+    bm25Results: (count: number, topScore: number) =>
+      log('debug', 'SEARCH', `BM25: ${count} results, top score: ${topScore.toFixed(3)}`),
+    vectorResults: (count: number, topScore: number) =>
+      log('debug', 'SEARCH', `Vector: ${count} results, top similarity: ${topScore.toFixed(4)}`),
+    hybridResults: (count: number, methods: string[]) =>
+      log('info', 'SEARCH', `Hybrid: ${count} results`, { methods }),
+    spoilerFiltered: (before: number, after: number, maxSection: number) =>
+      log('debug', 'SEARCH', `Spoiler filter: ${before} → ${after} (max section: ${maxSection})`),
+  },
+  cache: {
+    hit: (key: string) => log('debug', 'CACHE', `Hit: ${key}`),
+    miss: (key: string) => log('debug', 'CACHE', `Miss: ${key}`),
+    save: (key: string) => log('debug', 'CACHE', `Saved: ${key}`),
+    clear: (bookHash: string) => log('info', 'CACHE', `Cleared for book`, { bookHash }),
   },
 };
