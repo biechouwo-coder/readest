@@ -1,3 +1,5 @@
+> **Personal fork:** This repository is maintained by `biechouwo-coder` and is a fork of [readest/readest](https://github.com/readest/readest). Official downloads, support, and branding below belong to the upstream project. See [本仓库说明 / Fork guide](FORK.zh-CN.md) for local setup, checks, and sync instructions.
+
 <div align="center">
   <a href="https://readest.com?utm_source=github&utm_medium=referral&utm_campaign=readme" target="_blank">
     <img src="https://github.com/readest/readest/blob/main/apps/readest-app/src-tauri/icons/icon.png?raw=true" alt="Readest Logo" width="20%" />

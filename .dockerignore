@@ -29,3 +29,7 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Local environment overrides and credentials
+**/.env.local
+**/.env.*.local
+docker/.env
