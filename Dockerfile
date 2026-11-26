@@ -2,7 +2,7 @@ FROM docker.io/node:22-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-RUN corepack prepare pnpm@10.29.3 --activate
+RUN corepack prepare pnpm@10.33.0 --activate
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/readest-app/package.json ./apps/readest-app/
@@ -35,6 +35,6 @@ COPY . .
 WORKDIR /app/apps/readest-app
 RUN pnpm build-web
 
-FROM build as production-stage
+FROM build AS production-stage
 ENTRYPOINT ["pnpm", "start-web", "-H", "0.0.0.0"]
 EXPOSE 3000
